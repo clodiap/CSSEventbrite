@@ -26,14 +26,17 @@
 <p>
   <% if (current_user == @event.administrator) || (@event.attendees.include?(current_user)) %>
   Vous participez à cet évènement !
-  <%else%>
+  <% elsif !signed_in? %>
+  Connecter vous pour vous inscrire à cet évènement
+  <% else %>
   <%= link_to "Participer", new_event_attendance_path(params[:id]), class: "btn-dark btn p-1" %>
   <% end %>
 </p>
 <p>
-  <% if current_user == @event.administrator %>
-  <%= link_to "Mon espace EVENT", event_attendances_path(params[:id]), class: "btn-dark btn p-1" %>
-  <% end %>
+<% if current_user == @event.administrator %>
+<%= link_to "Mon espace EVENT", event_attendances_path(params[:id]), class: "btn-dark btn p-1" %>
+<% end %>
+	
 </p>
 
 

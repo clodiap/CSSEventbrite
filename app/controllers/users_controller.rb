@@ -4,6 +4,11 @@ before_action :verify_user_rights, only: [:show, :edit]
   
   def show
   	@user = User.find(params[:id])
+    puts "*"*17
+    @user.event_creations.each do |event|
+      puts event.title
+    end
+    puts "*"*17
   end
 
   def edit

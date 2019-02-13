@@ -22,7 +22,7 @@
 <h3 class="mt-5">Evènements crées</h3>
 <p>
 <div class="row mt-4">	
-  <% @user.events.each_with_index do |event, i| %>
+  <% @user.event_creations.each_with_index do |event, i| %>
   <div class="card mx-2 mb-3" style="width: 15rem">
 	<div class="card-body">
 	  <h5 class="card-title text-info"><%= event.title %></h5>

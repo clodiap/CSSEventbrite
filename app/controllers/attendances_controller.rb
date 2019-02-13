@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
 before_action :authenticate_administrator, only: [:index]
-before_action :already_attendee_or_admin
+#before_action :already_attendee_or_admin
 
   def index
   @event = Event.find(params[:event_id])
