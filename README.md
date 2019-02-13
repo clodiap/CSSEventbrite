@@ -24,6 +24,12 @@ PROJET DE MÉLANIE NGUON ET VIVIANE DE PÉTIGNY
   'party = Event.create(title:"Soirée Pilou Poilu", description:"Promis on se couche tôt et on te fait pas chier", price:5, location:"Manor di Petinisme", start_date:"30/05/2019", duration:20, administrator:moi)'
 ## Créer votre participation !
   'iamin = Attendance.create(stripe_customer_id:"999999", event: party, attendee: User.all.sample)'
+  
+
+
+# Par ici la prod!!!!
+  
+  https://calm-river-18731.herokuapp.com/
 
 
 

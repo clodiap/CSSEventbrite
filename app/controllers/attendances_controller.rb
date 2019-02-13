@@ -63,5 +63,4 @@ private
       redirect_to event_path(params[:event_id])
     end
   end
-
 end
