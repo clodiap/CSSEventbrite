@@ -21,6 +21,13 @@
   <h6 class=text-info>Date</h6>
   <%= text_field_tag 'day', '', class: 'form-control', placeholder: 'Ex: 26/03/2019'%>
   </br>
+
+  <div class="form-group">
+    <%= label_tag 'Date de début de ton évènement :' %>
+    <%= datetime_field_tag 'start_date', @event.start_date, class: "form-control" %>
+    <br />
+  </div>
+  
   <h6 class=text-info>Horaire</h6>
   <%= text_field_tag 'hour', '', class: 'form-control', placeholder: 'Ex: 18:30'%></br>
   <h6 class=text-info>Durée</h6>
