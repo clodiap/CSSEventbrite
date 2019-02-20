@@ -24,19 +24,23 @@
 
 
 <p>
-  <% if (current_user == @event.administrator) || (@event.attendees.include?(current_user)) %>
-  Vous participez à cet évènement !
+<% if user_profil_completed? %>
+  <%= link_to "Pour participer, mets-à-jour ton profil !!!", user_path(current_user.id), class: "btn-info btn p-1" %>
+<% else %> 
+  <% if event_admin? || event_attendee? %>
+    Vous participez à cet évènement !
   <% elsif !signed_in? %>
-  Connecter vous pour vous inscrire à cet évènement
+    Connecter vous pour vous inscrire à cet évènement
   <% else %>
-  <%= link_to "Participer", new_event_attendance_path(params[:id]), class: "btn-dark btn p-1" %>
+    <%= link_to "Participer", new_event_attendance_path(params[:id]), class: "btn-dark btn p-1" %>
   <% end %>
-</p>
-<p>
-<% if current_user == @event.administrator %>
-<%= link_to "Mon espace EVENT", event_attendances_path(params[:id]), class: "btn-dark btn p-1" %>
 <% end %>
-	
+</p>
+
+<p>
+<% if event_admin? %>
+  <%= link_to "Mon espace EVENT", event_attendances_path(params[:id]), class: "btn-dark btn p-1" %>
+<% end %>
 </p>
 
 

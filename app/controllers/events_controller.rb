@@ -50,4 +50,6 @@ before_action :authenticate_user!, only: [:new]
 
 private
 
+
+
 end

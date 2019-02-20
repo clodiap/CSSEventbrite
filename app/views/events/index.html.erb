@@ -1,7 +1,7 @@
 <div class="jumbotron">
 <% if user_signed_in?%>
-  <h1 class="display-3 mb-5">Bienvenue</h1>
-  <% if current_user.first_name == nil || current_user.last_name == nil ||  current_user.description == nil %>
+  <% if user_profil_completed? %>
+    <h1 class="display-3 mb-5">Bienvenue</h1>
     <p><%= link_to "Mets à jour ton profil !!!", user_path(current_user.id), class: "btn-info btn p-1" %></p>
   <% else %>
     <h1 class="display-3 mb-5">Bienvenue, <%= current_user.first_name %></h1>
@@ -9,6 +9,7 @@
   <% end %>
 <% else %>
   <h2>Bienvenue, connecte-toi !!!</h2>
+  <p><%= link_to "Créer un nouvelle EVENT", new_event_path, class: "btn-info btn p-1" %></p>
 <% end %>
 </div>
 

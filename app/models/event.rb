@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-  has_many :attendances
-  has_many :attendees, class_name: "User", through: :attendances
+  has_many :attendances, dependent: :destroy
+  has_many :attendees, class_name: "User", through: :attendances, dependent: :destroy
   belongs_to :administrator, foreign_key: 'administrator_id', class_name: "User"
   validates :start_date, presence: true
   validate :start_date_must_be_in_the_future

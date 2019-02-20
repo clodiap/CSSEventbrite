@@ -1,5 +1,5 @@
 
-<% if current_user.first_name == nil || current_user.last_name == nil ||  current_user.description == nil %>
+<% if user_profil_completed? %>
 </br><%= link_to "Compléter mon profil THPEVENT", edit_user_path, class: "btn-dark btn p-1" %>
 
 <% else %>

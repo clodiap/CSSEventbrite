@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   	resources :attendances
   end
   root 'events#index'
+  namespace :admin do
+  	resources :users
+  	resources :events
+  	resources :attendances
+  	root 'admin#index'
+  end
 end

@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Description</th>
+        <th>Création du compte</th>
+        <th>Nb d'événements créés</th>
+        <th>Afficher</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_users.each_with_index do |user, i| %>
+      <tr>	
+        <td><%= i + 1 %></td>
+        <td><%= user.first_name%></td>
+        <td><%= user.last_name%></td>
+        <td><%= user.email %></td>
+        <td><%= user.description %></td>
+        <td><%= user.created_at.strftime("%m/%d/%y, %H:%M")%></td>
+        <td><%= user.event_creations.count %></td>
+        <td><%= link_to "#{user.first_name} #{user.last_name}", new_event_attendance_path(user.id), class: "btn-dark btn p-1" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
