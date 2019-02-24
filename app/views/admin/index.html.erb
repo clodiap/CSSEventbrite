@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <% @all_users.each_with_index do |user, i| %>
-      <tr>	
+      <tr>
         <td><%= i + 1 %></td>
         <td><%= user.first_name%></td>
         <td><%= user.last_name%></td>
@@ -42,14 +42,14 @@
         <th>#</th>
         <th>Titre</th>
         <th>Description</th>
-        <th>Créateur</th>        
+        <th>Créateur</th>
         <th>Lieu</th>
         <th>Date</th>
         <th>Horaire</th>
-        <th>Durée</th>
+        <th>Date de fin</th>
         <th>Prix</th>
-        <th>Nombre de participants</th>  
-        <th>Gestion des participations</th>              
+        <th>Nombre de participants</th>
+        <th>Gestion des participations</th>
         <th>Afficher</th>
         <th>Editer</th>
         <th>Supprimer</th>
@@ -57,7 +57,7 @@
     </thead>
     <tbody>
       <% @all_events.each_with_index do |event, i| %>
-      <tr>  
+      <tr>
         <td><%= i + 1 %></td>
         <td><%= event.title%></td>
         <td><%= event.description%></td>
@@ -65,10 +65,10 @@
         <td><%= event.location %></td>
         <td><%= event.start_date.strftime("%m/%d/%y")%></td>
         <td><%= event.start_date.strftime("%H:%M")%></td>
-        <td><%= event.duration%> min</td>        
+        <td><%= event.end_date.strftime("%m/%d/%y") %></td>
         <td><%= event.price %></td>
         <td><%= event.attendances.count %></td>
-        <td><%= link_to '<i class="fas fa-hands-helping"></i>'.html_safe, event_path(event.id) %></td>                
+        <td><%= link_to '<i class="fas fa-hands-helping"></i>'.html_safe, event_path(event.id) %></td>
         <td><%= link_to '<i class="fas fa-eye"></i>'.html_safe, event_path(event.id) %></td>
         <td><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_event_path(event.id) %></td>
         <td><%= link_to '<i class="fas fa-trash"></i>'.html_safe, event_path(event.id), method: "delete", data: { confirm: "Vous-êtes vraiment sur ?"} %></td>
