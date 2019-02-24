@@ -10,7 +10,6 @@
         <th>Description</th>
         <th>Création du compte</th>
         <th>Nb d'événements créés</th>
-        <th>Nb de participation</th>
         <th>Afficher</th>
         <th>Editer</th>
         <th>Supprimer</th>
@@ -26,7 +25,6 @@
         <td><%= user.description %></td>
         <td><%= user.created_at.strftime("%m/%d/%y, %H:%M")%></td>
         <td><%= user.event_creations.count %></td>
-        <td><%= user.event_attendances.count %></td>
         <td><%= link_to '<i class="fas fa-eye"></i>'.html_safe, user_path(user.id) %></td>
         <td><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_user_path(user.id) %></td>
         <td><%= link_to '<i class="fas fa-trash"></i>'.html_safe, user_path(user.id), method: "delete", data: { confirm: "Vous-êtes vraiment sur ?"} %></td>
