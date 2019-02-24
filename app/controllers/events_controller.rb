@@ -45,7 +45,7 @@ before_action :authenticate_user!, only: [:new]
     @event.destroy
 
     flash[:notice] = "Vous avez supprimé votre event"
-    redirect_to admin_path
+    redirect_to root_path
   end
 
 private

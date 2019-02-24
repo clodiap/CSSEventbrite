@@ -34,4 +34,46 @@
       <% end %>
     </tbody>
   </table></br>
+
+    <h4>Table Evènements</h4>
+    <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Créateur</th>        
+        <th>Lieu</th>
+        <th>Date</th>
+        <th>Horaire</th>
+        <th>Durée</th>
+        <th>Prix</th>
+        <th>Nombre de participants</th>  
+        <th>Gestion des participations</th>              
+        <th>Afficher</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_events.each_with_index do |event, i| %>
+      <tr>  
+        <td><%= i + 1 %></td>
+        <td><%= event.title%></td>
+        <td><%= event.description%></td>
+        <td><%= event.administrator.first_name %></td>
+        <td><%= event.location %></td>
+        <td><%= event.start_date.strftime("%m/%d/%y")%></td>
+        <td><%= event.start_date.strftime("%H:%M")%></td>
+        <td><%= event.duration%> min</td>        
+        <td><%= event.price %></td>
+        <td><%= event.attendances.count %></td>
+        <td><%= link_to '<i class="fas fa-hands-helping"></i>'.html_safe, event_path(event.id) %></td>                
+        <td><%= link_to '<i class="fas fa-eye"></i>'.html_safe, event_path(event.id) %></td>
+        <td><%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_event_path(event.id) %></td>
+        <td><%= link_to '<i class="fas fa-trash"></i>'.html_safe, event_path(event.id), method: "delete", data: { confirm: "Vous-êtes vraiment sur ?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
