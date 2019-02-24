@@ -26,11 +26,19 @@ before_action :verify_user_rights, only: [:show, :edit]
   	  render :new 
   	end
   end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    flash[:notice] = "Vous avez supprimé le profil"
+    redirect_to root_path
+  end
 
 private
   
   def verify_user_rights
-  	unless current_user == User.find(params[:id])
+  	unless current_user == User.find(params[:id]) || current_user.try(:admin?)
   	flash[:danger] = "Vous ne pouvez pas faire ça !!"
     redirect_to user_path(current_user.id)
     end
