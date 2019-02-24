@@ -44,8 +44,8 @@ before_action :authenticate_user!, only: [:new]
     @event = Event.find(params[:id])
     @event.destroy
 
-    flash[:notice] = "Vous avez supprimé un potin avec succès"
-    redirect_to root_path
+    flash[:notice] = "Vous avez supprimé votre event"
+    redirect_to admin_path
   end
 
 private
