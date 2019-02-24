@@ -4,11 +4,19 @@
  	<%= @event.description %>
  </p>
 
+    <div class="col-md-4">
+        <% if @event.event_picture.attached?%>
+          <%= image_tag @event.event_picture, alt: 'event_picture', class: "img-thumbnail rounded mx-auto d-block mb-2"  %>
+        <% else %>
+          <%= image_tag 'concert.jpg', alt: 'event_picture', class: "img-thumbnail rounded mx-auto d-block mb-2 img-fluid"  %>
+        <% end %>
+      </div>
+
  <p>
  Où ? <%= @event.location %></br>
  Début ? <%= @event.start_date.strftime("%H:%M") %> (<%= @event.start_date.strftime("%m/%d/%y") %>)</br>
  Fin ? <%= @event_end_date.strftime("%H:%M") %> (<%= @event_end_date.strftime("%m/%d/%y") %>)</br>
- Et le prix ? <%= @event.price %>€</br> 
+ Et le prix ? <%= @event.price %>€</br>
  <% hours = @event.duration / 60 %>
  <% rest = @event.duration % 60 %>
  Durée ? <%= hours %>h<%=rest%>
@@ -26,7 +34,7 @@
 <p>
 <% if user_profil_completed? %>
   <%= link_to "Pour participer, mets-à-jour ton profil !!!", user_path(current_user.id), class: "btn-info btn p-1" %>
-<% else %> 
+<% else %>
   <% if event_admin? || event_attendee? %>
     Vous participez à cet évènement !
   <% elsif !signed_in? %>

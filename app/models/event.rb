@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances, dependent: :destroy
   belongs_to :administrator, foreign_key: 'administrator_id', class_name: "User"
+  has_one_attached :event_picture # image pour l'evenement
   validates :start_date, presence: true
   validate :start_date_must_be_in_the_future
   validates :duration, presence: true, numericality: {greater_than: 0, only_integer:true}
@@ -22,5 +23,5 @@ class Event < ApplicationRecord
   def self.end_date(id)
     self.find(id).start_date + (self.find(id).duration)*60
   end
-  
+
 end

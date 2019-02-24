@@ -9,10 +9,12 @@
   </div>
 <% end %>
 
-<%= form_tag url_for(action: 'create'), method: "post" do %>
+<%= form_tag url_for(action: 'create'), method: "post", multipart: true do %>
   <h6 class=text-info>Titre</h6>
   <%= text_field_tag 'title', '', class: 'form-control', placeholder: 'Ex: Fête de Pâques'%>
   <p class="small">Doit être compris entre 5 et 140 caractères.</p></br>
+  <h6 class=text-info>Image</h6>
+  <%= file_field_tag :event_picture  %>
   <h6 class=text-info>Prix</h6>
   <%= text_field_tag 'price', '', class: 'form-control', placeholder: 'Ex: 15'%>
   <p class="small">Doit être un chiffre entier positif.</p></br>
@@ -27,7 +29,7 @@
     <%= datetime_field_tag 'start_date', @event.start_date, class: "form-control" %>
     <br />
   </div>
-  
+
   <h6 class=text-info>Horaire</h6>
   <%= text_field_tag 'hour', '', class: 'form-control', placeholder: 'Ex: 18:30'%></br>
   <h6 class=text-info>Durée</h6>
